@@ -14,20 +14,32 @@ async function fetchRecipes() {
 
     try {
 
-        const response = await fetch(`${API_URL}/recipes`);
-        const data = await response.json();
+    const response = await fetch(`${API_URL}/recipes`);
+    const result = await response.json();
 
-        displayRecipes(data);
+    if (result.success) {
 
-    } catch (error) {
+        // Ambil hanya resep terbaru
+        const latestRecipe = result.data.slice(-1);
 
-        console.log("API error, fallback local data");
+        displayRecipes(latestRecipe);
 
+    } else {
+
+        console.log(result.message);
         loadLocalFallback();
 
     }
-}
 
+} catch (error) {
+
+    console.error(error);
+    console.log("API error, fallback local data");
+
+    loadLocalFallback();
+
+    }
+}
 // ==============================
 // FALLBACK (OPTIONAL)
 // ==============================
