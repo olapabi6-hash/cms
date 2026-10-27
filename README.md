@@ -1,15 +1,7 @@
-widya
-
 ezrina
-
-sabrina
 
 lola
 
-aliqa
-
-nayla
+tiara
 
 zeinieah
-
-anita
